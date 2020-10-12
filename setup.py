@@ -31,6 +31,6 @@ setup(
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
     ],
     install_requires=[
-        'Telethon>=0.19,<0.20'
+        'Telethon>=0.19,<2.0'
     ]
 )
