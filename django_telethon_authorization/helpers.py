@@ -40,7 +40,7 @@ class Telegram:
                 )
             session = SQLiteSession(os.path.join(session_path, "%s.session" % phone))
         elif session_class == MemorySession:
-            sessions = session_class()
+            session = session_class()
         else:
             session = session_class(phone)
 
