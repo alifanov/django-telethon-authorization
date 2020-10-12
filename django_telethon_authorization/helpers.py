@@ -4,7 +4,7 @@ from typing import Union
 
 import os
 from django.http import JsonResponse, HttpRequest
-from telethon import TelegramClient
+from telethon import TelegramClient, sync
 from telethon.sessions import SQLiteSession
 
 from .models import TelegramAuthorization
