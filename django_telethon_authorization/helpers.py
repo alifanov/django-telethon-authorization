@@ -5,7 +5,7 @@ from typing import Union
 import os
 from django.http import JsonResponse, HttpRequest
 from telethon.sync import TelegramClient
-from telethon.sessions import SQLiteSession
+from telethon.sessions import SQLiteSession, MemorySession
 
 from .models import TelegramAuthorization
 from .exceptions import TelegramAuthorizationException, PayloadException
@@ -39,6 +39,8 @@ class Telegram:
                     "SQLite session implementation used, but variable TG_SESSION_PATH was not set."
                 )
             session = SQLiteSession(os.path.join(session_path, "%s.session" % phone))
+        elif sessions_class == MemorySession:
+            sessions = session_class()
         else:
             session = session_class(phone)
 
