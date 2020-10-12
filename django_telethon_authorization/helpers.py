@@ -45,9 +45,7 @@ class Telegram:
         client = TelegramClient(
             session,
             api_id,
-            api_hash,
-            spawn_read_thread=False,
-            report_errors=False
+            api_hash
         )
         connected = client.connect()
         if not connected:
