@@ -47,8 +47,9 @@ class Telegram:
             api_id,
             api_hash
         )
-        connected = client.connect()
-        if not connected:
+        client.connect()
+        
+        if not client.is_connected():
             raise TelegramAuthorizationException("Can't connect to telegram servers")
 
         return client
