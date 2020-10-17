@@ -7,6 +7,8 @@ from django.http import JsonResponse, HttpRequest
 from telethon.sync import TelegramClient
 from telethon.sessions import SQLiteSession, MemorySession
 
+from django_telethon_session.sessions import DjangoSession
+
 from .models import TelegramAuthorization
 from .exceptions import TelegramAuthorizationException, PayloadException
 
@@ -40,6 +42,8 @@ class Telegram:
                 )
             session = SQLiteSession(os.path.join(session_path, "%s.session" % phone))
         elif session_class == MemorySession:
+            session = session_class()
+        elif session_class == DjangoSession:
             session = session_class()
         else:
             session = session_class(phone)
